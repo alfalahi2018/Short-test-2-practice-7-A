@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 7 English - Electronic Task 01 (Vocabulary & Grammar)</title>
+  <style>
+    :root {
+      --primary: #475569;
+      --primary-dark: #334155;
+      --accent: #3b82f6;
+      --bg: #f4f7fb;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #cbd5e1;
+      --correct-bg: #dcfce7;
+      --correct-border: #22c55e;
+      --correct-text: #166534;
+      --wrong-bg: #fee2e2;
+      --wrong-border: #ef4444;
+      --wrong-text: #991b1b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    .exam-header {
+      background: linear-gradient(135deg, #475569 0%, #334155 100%);
+      color: #fff;
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header-left h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .header-left p {
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      margin-top: 4px;
+    }
+
+    .teacher-badge {
+      display: inline-block;
+      margin-top: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    .header-badges {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .task-badge {
+      background: #1e293b;
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 16px;
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .task-badge .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: 0.5px;
+    }
+
+    .task-badge .val {
+      font-size: 1.4rem;
+      font-weight: 800;
+    }
+
+    .score-badge {
+      background: #ffffff;
+      color: #1e293b;
+      border-radius: 10px;
+      padding: 10px 18px;
+      text-align: center;
+      min-width: 110px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .score-badge .label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    .score-badge .val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    .student-bar {
+      background: #f8fafc;
+      padding: 12px 28px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.92rem;
+    }
+
+    .student-bar input {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.92rem;
+      color: var(--text);
+      outline: none;
+    }
+
+    .student-bar input:focus {
+      border-color: var(--accent);
+    }
+
+    .content {
+      padding: 26px 28px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .section-title h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.4px;
+    }
+
+    .marks-tag {
+      background: #e0e7ff;
+      color: #3730a3;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    .instructions {
+      font-style: italic;
+      color: #475569;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    .passage-box {
+      background: #f8fafc;
+      border: 2px solid #94a3b8;
+      border-radius: 10px;
+      padding: 20px 22px;
+      font-size: 1.08rem;
+      line-height: 2.05;
+      color: #0f172a;
+      margin-bottom: 24px;
+    }
+
+    .blank-slot {
+      display: inline-block;
+      min-width: 105px;
+      padding: 0 10px;
+      margin: 0 3px;
+      border-bottom: 2px dashed var(--accent);
+      text-align: center;
+      font-weight: 700;
+      color: #1d4ed8;
+      background: #eff6ff;
+      border-radius: 4px;
+      transition: all 0.25s ease;
+    }
+
+    .blank-slot.filled {
+      border-bottom-style: solid;
+      background: #dbeafe;
+    }
+
+    .blank-slot.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct-border);
+      color: var(--correct-text);
+    }
+
+    .blank-slot.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong-border);
+      color: var(--wrong-text);
+    }
+
+    .questions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .question-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 12px 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      background: #ffffff;
+      transition: border-color 0.2s;
+    }
+
+    .question-row:hover {
+      border-color: #94a3b8;
+    }
+
+    .q-num {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--primary-dark);
+      min-width: 32px;
+    }
+
+    .options-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .option-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .option-btn:hover:not(.disabled) {
+      border-color: var(--accent);
+      background: #f0f7ff;
+    }
+
+    .bubble {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #475569;
+      display: inline-block;
+      position: relative;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .option-btn.selected {
+      border-color: var(--accent);
+      background: #eff6ff;
+      font-weight: 700;
+      color: #1d4ed8;
+    }
+
+    .option-btn.selected .bubble {
+      border-color: var(--accent);
+      background: var(--accent);
+      box-shadow: inset 0 0 0 3px #fff;
+    }
+
+    .option-btn.correct-ans {
+      border-color: var(--correct-border) !important;
+      background: var(--correct-bg) !important;
+      color: var(--correct-text) !important;
+      font-weight: 700;
+    }
+
+    .option-btn.correct-ans .bubble {
+      border-color: var(--correct-border) !important;
+      background: var(--correct-border) !important;
+      box-shadow: inset 0 0 0 3px #fff;
+    }
+
+    .option-btn.wrong-ans {
+      border-color: var(--wrong-border) !important;
+      background: var(--wrong-bg) !important;
+      color: var(--wrong-text) !important;
+      font-weight: 700;
+    }
+
+    .option-btn.wrong-ans .bubble {
+      border-color: var(--wrong-border) !important;
+      background: var(--wrong-border) !important;
+      box-shadow: inset 0 0 0 3px #fff;
+    }
+
+    .option-btn.disabled {
+      cursor: default;
+    }
+
+    .feedback-icon {
+      margin-left: auto;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      margin-top: 26px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 12px 26px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-submit {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(71, 85, 105, 0.25);
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-reset {
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .btn-reset:hover {
+      background: #cbd5e1;
+    }
+
+    .result-banner {
+      margin-top: 22px;
+      padding: 18px 22px;
+      border-radius: 10px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .result-banner.show {
+      display: flex;
+    }
+
+    .result-banner.pass {
+      background: #dcfce7;
+      border: 1.5px solid #22c55e;
+      color: #14532d;
+    }
+
+    .result-banner.retry {
+      background: #fef3c7;
+      border: 1.5px solid #f59e0b;
+      color: #78350f;
+    }
+
+    .footer-bar {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .exam-header, .content, .student-bar, .footer-bar {
+        padding: 16px;
+      }
+      .option-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="exam-header">
+    <div class="header-left">
+      <h1>Electronic Task — Vocabulary &amp; Grammar</h1>
+      <p>Noor Platform Assignment &bull; Grade 7 English Language</p>
+      <div class="teacher-badge">Prepared by: T.Badria Alfalahi</div>
+    </div>
+    <div class="header-badges">
+      <div class="task-badge">
+        <div class="label">TASK</div>
+        <div class="val">01</div>
+      </div>
+      <div class="score-badge">
+        <div class="label">VCB/GRM SCORE</div>
+        <div class="val" id="scoreDisplay">— / 5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="student-bar">
+    <div>
+      <label for="studentNameInput"><strong>Name:</strong></label>
+      <input type="text" id="studentNameInput" placeholder="Enter your name..." />
+    </div>
+    <div>
+      <label for="classSectionInput"><strong>Class:</strong> 7 /</label>
+      <input type="text" id="classSectionInput" placeholder="Section" style="width: 75px;" />
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section-title">
+      <h2>VOCABULARY &amp; GRAMMAR</h2>
+      <span class="marks-tag">(5 marks)</span>
+    </div>
+    <p class="instructions">For each item, shade in the bubble &#9679; next to the correct option, then click <strong>Submit &amp; Check Answers</strong>.</p>
+
+    <div class="passage-box" id="passageBox">
+      Last week, Omar and Nadia helped clean the school library. They put storybooks on a high
+      <span class="blank-slot" id="blank-1">(1) ________</span>
+      near the window. Then, Nadia used a pair of
+      <span class="blank-slot" id="blank-2">(2) ________</span>
+      to cut paper for the reading corner. They reminded classmates that everyone
+      <span class="blank-slot" id="blank-3">(3) ________</span>
+      keep the books clean. Later, they placed a small
+      <span class="blank-slot" id="blank-4">(4) ________</span>
+      on the desk to hold new pens.
+      <span class="blank-slot" id="blank-5">(5) ________</span>
+      they finish organizing the shelves, they will read together.
+    </div>
+
+    <div class="questions-list" id="questionsContainer"></div>
+
+    <div class="actions">
+      <button class="btn btn-submit" id="submitBtn" onclick="gradeQuiz()">Submit &amp; Check Answers</button>
+      <button class="btn btn-reset" id="resetBtn" onclick="resetQuiz()" style="display:none;">Try Again</button>
+    </div>
+
+    <div class="result-banner" id="resultBanner">
+      <div>
+        <strong id="resultTitle" style="font-size:1.1rem;"></strong>
+        <p id="resultMsg" style="margin-top:4px; font-size:0.95rem;"></p>
+      </div>
+      <div style="font-size:1.5rem; font-weight:800;" id="resultScoreBig"></div>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <span>Grade 7 English — Prepared by: T.Badria Alfalahi</span>
+    <span>Interactive Electronic Task</span>
+  </div>
+</div>
+
+<script>
+  const quizData = [
+    {
+      id: 1,
+      options: ["shelf", "fence", "roof"],
+      correct: "shelf"
+    },
+    {
+      id: 2,
+      options: ["boots", "scissors", "gloves"],
+      correct: "scissors"
+    },
+    {
+      id: 3,
+      options: ["should", "needn't", "won't"],
+      correct: "should"
+    },
+    {
+      id: 4,
+      options: ["map", "cup", "hat"],
+      correct: "cup"
+    },
+    {
+      id: 5,
+      options: ["since", "if", "for"],
+      correct: "if"
+    }
+  ];
+
+  let userAnswers = {};
+  let submitted = false;
+
+  function renderQuestions() {
+    const container = document.getElementById("questionsContainer");
+    container.innerHTML = "";
+
+    quizData.forEach(item => {
+      const row = document.createElement("div");
+      row.className = "question-row";
+      row.id = `q-row-${item.id}`;
+
+      const num = document.createElement("div");
+      num.className = "q-num";
+      num.textContent = `${item.id})`;
+      row.appendChild(num);
+
+      const group = document.createElement("div");
+      group.className = "options-group";
+
+      item.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "option-btn";
+        btn.id = `opt-${item.id}-${opt.replace(/[^a-zA-Z]/g, '')}`;
+        btn.onclick = () => selectOption(item.id, opt);
+
+        const bubble = document.createElement("span");
+        bubble.className = "bubble";
+
+        const label = document.createElement("span");
+        label.textContent = opt;
+
+        btn.appendChild(bubble);
+        btn.appendChild(label);
+        group.appendChild(btn);
+      });
+
+      row.appendChild(group);
+
+      const fb = document.createElement("div");
+      fb.className = "feedback-icon";
+      fb.id = `fb-${item.id}`;
+      row.appendChild(fb);
+
+      container.appendChild(row);
+    });
+  }
+
+  function selectOption(qId, optionText) {
+    if (submitted) return;
+    userAnswers[qId] = optionText;
+
+    const blank = document.getElementById(`blank-${qId}`);
+    blank.textContent = `(${qId}) ${optionText}`;
+    blank.classList.add("filled");
+
+    const item = quizData.find(q => q.id === qId);
+    item.options.forEach(opt => {
+      const btn = document.getElementById(`opt-${qId}-${opt.replace(/[^a-zA-Z]/g, '')}`);
+      if (opt === optionText) {
+        btn.classList.add("selected");
+      } else {
+        btn.classList.remove("selected");
+      }
+    });
+  }
+
+  function gradeQuiz() {
+    if (Object.keys(userAnswers).length < quizData.length) {
+      alert("Please answer all 5 items before submitting!");
+      return;
+    }
+
+    submitted = true;
+    let score = 0;
+
+    quizData.forEach(item => {
+      const chosen = userAnswers[item.id];
+      const isCorrect = chosen === item.correct;
+      if (isCorrect) score++;
+
+      const blank = document.getElementById(`blank-${item.id}`);
+      const fb = document.getElementById(`fb-${item.id}`);
+
+      item.options.forEach(opt => {
+        const btn = document.getElementById(`opt-${item.id}-${opt.replace(/[^a-zA-Z]/g, '')}`);
+        btn.classList.add("disabled");
+        if (opt === item.correct) {
+          btn.classList.add("correct-ans");
+        } else if (opt === chosen && !isCorrect) {
+          btn.classList.add("wrong-ans");
+        }
+      });
+
+      if (isCorrect) {
+        blank.classList.add("correct");
+        fb.textContent = "✔ Correct";
+        fb.style.color = "#166534";
+      } else {
+        blank.classList.add("wrong");
+        blank.textContent = `(${item.id}) ${chosen} → ${item.correct}`;
+        fb.textContent = `✘ Answer: ${item.correct}`;
+        fb.style.color = "#991b1b";
+      }
+    });
+
+    document.getElementById("scoreDisplay").textContent = `${score} / ${quizData.length}`;
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("resetBtn").style.display = "inline-block";
+
+    const banner = document.getElementById("resultBanner");
+    const title = document.getElementById("resultTitle");
+    const msg = document.getElementById("resultMsg");
+    const bigScore = document.getElementById("resultScoreBig");
+
+    banner.classList.add("show");
+    bigScore.textContent = `${score} / ${quizData.length}`;
+
+    if (score >= 4) {
+      banner.className = "result-banner show pass";
+      title.textContent = "Excellent Work! 🌟";
+      msg.textContent = "You mastered the vocabulary and grammar items in this task.";
+    } else if (score === 3) {
+      banner.className = "result-banner show pass";
+      title.textContent = "Good Effort! 👍";
+      msg.textContent = "Review the highlighted corrections above to get a full mark next time.";
+    } else {
+      banner.className = "result-banner show retry";
+      title.textContent = "Keep Practicing! 💪";
+      msg.textContent = "Check the correct answers highlighted in green and try again.";
+    }
+  }
+
+  function resetQuiz() {
+    userAnswers = {};
+    submitted = false;
+    document.getElementById("scoreDisplay").textContent = "— / 5";
+    document.getElementById("submitBtn").disabled = false;
+    document.getElementById("resetBtn").style.display = "none";
+    const banner = document.getElementById("resultBanner");
+    banner.className = "result-banner";
+
+    quizData.forEach(item => {
+      const blank = document.getElementById(`blank-${item.id}`);
+      blank.textContent = `(${item.id}) ________`;
+      blank.className = "blank-slot";
+    });
+
+    renderQuestions();
+  }
+
+  window.onload = function () {
+    renderQuestions();
+  };
+</script>
+
+</body>
+</html>
